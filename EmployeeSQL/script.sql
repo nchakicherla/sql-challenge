@@ -29,10 +29,10 @@ CREATE TABLE "Dept_Manager" (
 DROP TABLE IF EXISTS "Dept_Employee" CASCADE;
 CREATE TABLE "Dept_Employee" (
     "emp_no" int   NOT NULL,
-    "dept_no" varchar(4)   NOT NULL,
-    CONSTRAINT "pk_Dept_Employee" PRIMARY KEY (
-        "emp_no"
-     )
+    "dept_no" varchar(4)   NOT NULL
+--    CONSTRAINT "pk_Dept_Employee" PRIMARY KEY (
+--       "emp_no"
+--     )
 );
 
 DROP TABLE IF EXISTS "Departments" CASCADE;
@@ -64,32 +64,26 @@ ALTER TABLE "Salaries" ADD CONSTRAINT "unq_Salaries_emp_no" UNIQUE ("emp_no");
 
 ALTER TABLE "Dept_Manager" ADD CONSTRAINT "unq_Dept_Manager_emp_no" UNIQUE ("emp_no");
 
-ALTER TABLE "Dept_Employee" ADD CONSTRAINT "unq_Dept_Employee_emp_no" UNIQUE ("emp_no");
+--ALTER TABLE "Dept_Employee" ADD CONSTRAINT "unq_Dept_Employee_emp_no" UNIQUE ("emp_no");
 
 ALTER TABLE "Departments" ADD CONSTRAINT "unq_Departments_dept_no" UNIQUE ("dept_no");
 
 ALTER TABLE "Employees" ADD CONSTRAINT "unq_Employees_emp_no" UNIQUE ("emp_no");
 
-
-
 -- ALTER TABLE "Salaries" ADD CONSTRAINT "fk_Salaries_emp_no" FOREIGN KEY("emp_no")
 -- REFERENCES "Employees" ("emp_no");
 
+--ALTER TABLE "Dept_Manager" ADD CONSTRAINT "fk_Dept Manager_emp_no" FOREIGN KEY("emp_no")
+--REFERENCES "Employees" ("emp_no");
 
+--ALTER TABLE "Dept_Employee" ADD CONSTRAINT "fk_Dept Employee_dept_no" FOREIGN KEY("dept_no")
+--REFERENCES "Departments" ("dept_no");
 
-ALTER TABLE "Dept_Manager" ADD CONSTRAINT "fk_Dept Manager_emp_no" FOREIGN KEY("emp_no")
-REFERENCES "Employees" ("emp_no");
+--ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_no" FOREIGN KEY("emp_no")
+--REFERENCES "Dept_Employee" ("emp_no");
 
-ALTER TABLE "Dept_Employee" ADD CONSTRAINT "fk_Dept Employee_dept_no" FOREIGN KEY("dept_no")
-REFERENCES "Departments" ("dept_no");
-
-ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_no" FOREIGN KEY("emp_no")
-REFERENCES "Dept_Employee" ("emp_no");
-
-ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_title_id" FOREIGN KEY("emp_title_id")
-REFERENCES "Titles" ("title_id");
-
-
+--ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_title_id" FOREIGN KEY("emp_title_id")
+--REFERENCES "Titles" ("title_id");
 
 COPY "Titles" (title_id, title)
 FROM '/tmp/titles.csv'
