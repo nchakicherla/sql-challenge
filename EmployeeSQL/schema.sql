@@ -114,5 +114,3 @@ COPY Dept_Employee (emp_no, dept_no)
 FROM '/tmp/dept_emp.csv'
 DELIMITER ','
 CSV HEADER;
-
--- SELECT * FROM Employees;
